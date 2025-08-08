@@ -1,25 +1,25 @@
 const editor = document.getElementById('editor');
 const charCount = document.getElementById('char-count');
 const copyIcon = document.getElementById('copy-icon');
-const popup = document.getElementById('popup');
+const copyPopup = document.getElementById('copy-popup');
 
-// Precompiled note
-const defaultNote = "Benvenuto su Hash Notes! Condividi questa nota semplicemente copiando l'URL.";
-
-// Decode hash on load
+// Decodifica hash all'avvio
 if (location.hash.length > 1) {
   try {
     const decoded = decodeURIComponent(atob(location.hash.slice(1)));
     editor.value = decoded;
+    charCount.textContent = 2000 - editor.value.length;
   } catch (e) {
     console.error("Errore nella decodifica:", e);
-    editor.value = defaultNote;
   }
 } else {
-  editor.value = defaultNote;
+  editor.value = "Benvenuto su Hash Notes! Condividi questa nota semplicemente copiando l'URL.";
+  charCount.textContent = 2000 - editor.value.length;
+  const encoded = btoa(encodeURIComponent(editor.value));
+  location.hash = encoded;
 }
 
-// Update hash and character count
+// Aggiorna hash e contatore quando si scrive
 editor.addEventListener('input', () => {
   const text = editor.value.slice(0, 2000);
   editor.value = text;
@@ -28,12 +28,12 @@ editor.addEventListener('input', () => {
   charCount.textContent = 2000 - text.length;
 });
 
-// Copy URL to clipboard
+// Copia URL negli appunti
 copyIcon.addEventListener('click', () => {
   navigator.clipboard.writeText(location.href).then(() => {
-    popup.style.display = 'block';
+    copyPopup.style.display = 'block';
     setTimeout(() => {
-      popup.style.display = 'none';
+      copyPopup.style.display = 'none';
     }, 2000);
   });
 });

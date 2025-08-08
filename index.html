@@ -8,13 +8,13 @@
 </head>
 <body>
   <div id="top-bar">
-    <span id="char-count">2000</span> <span id="char-label">caratteri rimanenti</span>
+    <span id="char-count">2000</span> <span>caratteri rimanenti</span>
   </div>
   <textarea id="editor" maxlength="2000" placeholder="Scrivi la tua nota qui..."></textarea>
-  <div id="bottom-bar">
-    <span id="copy-icon" class="material-icons">content_copy</span>
+  <div id="copy-container">
+    <span class="material-icons" id="copy-icon" title="Copia URL">content_copy</span>
+    <span id="copy-popup">URL copiato</span>
   </div>
-  <div id="popup">URL copiato</div>
   <script src="script.js"></script>
 </body>
 </html>
