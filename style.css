@@ -3,51 +3,63 @@ body {
   background-color: #000;
   color: #fff;
   font-family: monospace;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
 }
 
 #top-bar {
-  width: 90%;
-  text-align: right;
-  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   color: #ccc;
-  font-size: 0.9rem;
+}
+
+#char-count {
+  font-size: 1.5rem;
+  margin-right: 0.3rem;
+}
+
+#char-label {
+  font-size: 1.2rem;
 }
 
 #editor {
-  width: 90%;
-  height: 70%;
+  flex-grow: 1;
+  width: 100%;
   background: #111;
   color: #fff;
   border: none;
   resize: none;
   font-size: 1rem;
   padding: 1rem;
-  margin-top: 10px;
+  box-sizing: border-box;
 }
 
-#copy-container {
-  margin-top: 10px;
-  position: relative;
+#bottom-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 #copy-icon {
-  cursor: pointer;
+  font-size: 2.5rem;
   color: #ccc;
-  font-size: 24px;
+  cursor: pointer;
 }
 
-#copy-popup {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
+#popup {
+  position: fixed;
+  bottom: 3rem;
   background: #333;
   color: #fff;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-size: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
+  font-size: 1rem;
 }
